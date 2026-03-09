@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Interactive Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">CloudPerf</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="methodology.html" class="nav-link">Methodology</a></li>
+                <li><a href="live.html" class="nav-link">Live Benchmark</a></li>
+                <li><a href="results.html" class="nav-link active">Results</a></li>
+                <li><a href="system.html" class="nav-link">System Info</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <h1 class="page-title">📊 Interactive Performance Comparison</h1>
+        
+        <!-- Input Section -->
+        <div class="input-panel">
+            <h2>Enter Your Own Values</h2>
+            <div class="input-grid">
+                <div class="metric-input">
+                    <h3>Startup Time (seconds)</h3>
+                    <label>VM: <input type="number" id="startup-vm" step="0.1" value="45.2"></label>
+                    <label>Container: <input type="number" id="startup-container" step="0.1" value="2.1"></label>
+                </div>
+                <div class="metric-input">
+                    <h3>CPU Usage (%)</h3>
+                    <label>VM: <input type="number" id="cpu-vm" step="0.1" value="12.5"></label>
+                    <label>Container: <input type="number" id="cpu-container" step="0.1" value="5.3"></label>
+                </div>
+                <div class="metric-input">
+                    <h3>Memory Usage (MB)</h3>
+                    <label>VM: <input type="number" id="memory-vm" step="1" value="1024"></label>
+                    <label>Container: <input type="number" id="memory-container" step="1" value="256"></label>
+                </div>
+            </div>
+            <!-- Single button group (all buttons here) -->
+            <div class="button-group">
+                <button id="update-charts" class="btn">Update Charts</button>
+                <button id="reset-charts" class="btn btn-secondary">Reset to Original</button>
+                <button id="export-png" class="btn btn-secondary">Export Charts as PNG</button>
+                <button id="export-pdf" class="btn btn-secondary">Export as PDF</button>
+                <button id="save-results" class="btn btn-secondary" style="display: none;">Save This Comparison</button>
+            </div>
+        </div>
+
+        <!-- Difference Summary Cards -->
+        <div class="diff-summary">
+            <div class="diff-card">
+                <h2>Startup Time</h2>
+                <p id="diff-startup"></p>
+            </div>
+            <div class="diff-card">
+                <h2>CPU Usage</h2>
+                <p id="diff-cpu"></p>
+            </div>
+            <div class="diff-card">
+                <h2>Memory Usage</h2>
+                <p id="diff-memory"></p>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Startup Time</h2>
+                <canvas id="startupChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>CPU Usage</h2>
+                <canvas id="cpuChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Memory Usage</h2>
+                <canvas id="memoryChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 CloudPerf · Mini Project by M.Praveen Raj, Priyam Kumar Mishra, V.Thanigaivel</p>
+    </footer>
+
+      <!-- Load jsPDF first, then charts.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="js/charts.js"></script>
+<!-- login check script... -->
+    <!-- Check login status and show save button if authenticated -->
+    <script>
+        fetch('/api/current_user')
+            .then(res => res.json())
+            .then(data => {
+                if (data.authenticated) {
+                    document.getElementById('save-results').style.display = 'inline-block';
+                }
+            })
+            .catch(err => console.error('Error checking login status:', err));
+    </script>
+</body>
+</html>

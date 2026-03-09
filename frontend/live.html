@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Benchmark - CloudPerf</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">CloudPerf</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="methodology.html" class="nav-link">Methodology</a></li>
+                <li><a href="live.html" class="nav-link active">Live Benchmark</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+                <li><a href="system.html" class="nav-link">System Info</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <h1 class="page-title">🐍 Live Python Performance Test</h1>
+
+        <div class="interpreter-grid">
+            <div class="editor-panel">
+                <h2>Write Python Code</h2>
+                <textarea id="editor" style="width:100%; height:300px; background:#0a0f1f; color:#ffb6c1; border:1px solid #8a2be2; border-radius:10px; padding:10px; font-family:monospace;">import time
+for i in range(5):
+    print(f"Step {i}")
+    time.sleep(1)</textarea>
+                <div class="button-group" style="margin-top: 1rem;">
+                    <button id="run-code" class="btn">Run & Benchmark</button>
+                    <button id="clear-output" class="btn btn-secondary">Clear Output</button>
+                </div>
+            </div>
+
+            <div class="output-panel">
+                <h2>Execution Output</h2>
+                <div id="output" class="output-box">Ready. Click "Run & Benchmark".</div>
+            </div>
+        </div>
+
+        <div class="live-results">
+            <h2>⚡ Live Performance Comparison</h2>
+            <div class="diff-summary">
+                <div class="diff-card">
+                    <h2>Startup Time</h2>
+                    <p id="live-startup">Waiting...</p>
+                </div>
+                <div class="diff-card">
+                    <h2>CPU Usage</h2>
+                    <p id="live-cpu">Waiting...</p>
+                </div>
+                <div class="diff-card">
+                    <h2>Memory Usage</h2>
+                    <p id="live-memory">Waiting...</p>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h2>Startup Time</h2>
+                    <canvas id="liveStartupChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h2>CPU Usage</h2>
+                    <canvas id="liveCpuChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h2>Memory Usage</h2>
+                    <canvas id="liveMemoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 CloudPerf</p>
+    </footer>
+
+    <script src="js/live.js"></script>
+</body>
+</html>

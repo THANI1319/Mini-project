@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology - CloudPerf</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">CloudPerf</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="methodology.html" class="nav-link active">Methodology</a></li>
+                <li><a href="live.html" class="nav-link">Live Benchmark</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+                <li><a href="system.html" class="nav-link">System Info</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <h1 class="page-title">🔬 Methodology</h1>
+        <div class="methodology-grid">
+            <div class="method-card">
+                <h2>How It Works</h2>
+                <ul>
+                    <li>You write Python code in the editor.</li>
+                    <li>The backend runs the same code in two isolated Docker containers:
+                        <ul>
+                            <li><strong>Container simulation</strong>: lightweight <code>python:3.9-slim</code> image</li>
+                            <li><strong>VM simulation</strong>: heavier <code>python:3.9</code> image (simulates VM overhead)</li>
+                        </ul>
+                    </li>
+                    <li>While executing, we measure startup time, CPU usage, and memory usage using Docker stats.</li>
+                </ul>
+            </div>
+            <div class="method-card">
+                <h2>Metrics</h2>
+                <ul>
+                    <li><strong>Startup time</strong>: time until code begins execution (seconds).</li>
+                    <li><strong>CPU usage</strong>: average % CPU during execution.</li>
+                    <li><strong>Memory usage</strong>: peak resident memory (MB).</li>
+                </ul>
+            </div>
+            <div class="method-card">
+                <h2>Security</h2>
+                <ul>
+                    <li>Each run is isolated in a fresh container.</li>
+                    <li>Network disabled, memory/cpu limited, and timeout (30s).</li>
+                    <li>No persistent storage – containers are removed after execution.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 CloudPerf</p>
+    </footer>
+</body>
+</html>

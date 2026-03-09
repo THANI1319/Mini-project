@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Info - CloudPerf</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">CloudPerf</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="methodology.html" class="nav-link">Methodology</a></li>
+                <li><a href="live.html" class="nav-link">Live Benchmark</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+                <li><a href="system.html" class="nav-link active">System Info</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <h1 class="page-title">🖥️ Your System Specifications</h1>
+        <div class="system-container">
+            <button id="scan-btn" class="btn pulse">Scan My System</button>
+            <div id="system-info" class="system-card" style="display: none;">
+                <h2>Detected Hardware</h2>
+                <table class="spec-table">
+                    <tr><th>Property</th><th>Value</th></tr>
+                    <tr><td>CPU Cores</td><td id="cpu-cores">-</td></tr>
+                    <tr><td>RAM</td><td id="ram">-</td></tr>
+                    <tr><td>Platform</td><td id="platform">-</td></tr>
+                    <tr><td>Browser</td><td id="browser">-</td></tr>
+                    <tr><td>Screen Resolution</td><td id="screen">-</td></tr>
+                    <tr><td>User Agent</td><td id="user-agent">-</td></tr>
+                    <tr><td>Network Connection</td><td id="connection">-</td></tr>
+<tr><td>Language</td><td id="language">-</td></tr>
+<tr><td>Timezone</td><td id="timezone">-</td></tr>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 CloudPerf</p>
+    </footer>
+
+    <script src="js/system.js"></script>
+</body>
+</html>
